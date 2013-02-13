@@ -1,0 +1,14 @@
+name: AntiTreeCutter
+authors: [Staartvin, etleJ]
+main: team.craftmein.plugins.AntiTreeCutter.AntiTreeCutter
+version: 1.0
+description: Ban those half-way tree noobs!
+permissions:
+    staffinfo.groups.view:
+        description: Allows a player to view a list of groups.
+        default: true
+commands:
+    antitreecutter:
+      description: Master command of AntiTreeCutter.
+      usage: /<command> <argument>
+      aliases: [atc]
