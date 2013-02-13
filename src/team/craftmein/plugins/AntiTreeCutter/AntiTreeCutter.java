@@ -13,7 +13,7 @@ public class AntiTreeCutter extends JavaPlugin {
 	}
 	
 	public void onDisable() {
-		
+		// TEst
 		log.logNormal("AntiTreeCutter v" + getDescription().getVersion() + " has been disabled!");
 	}
 }
