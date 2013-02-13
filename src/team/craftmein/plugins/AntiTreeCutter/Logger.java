@@ -8,7 +8,7 @@ public class Logger {
 		plugin = instance;
 	}
 	
-	protected void logNormal(String message){
+	public void logNormal(String message){
 		System.out.print("[AntiTreeCutter] " + message);
 	}
 	
