@@ -15,6 +15,7 @@ public class AntiTreeCutter extends JavaPlugin {
 	public void onDisable() {
 		// TEst
 		// Kan Jelte het zien? Update: JA!
+		// Jemoederaandepoeder
 		log.logNormal("AntiTreeCutter v" + getDescription().getVersion() + " has been disabled!");
 	}
 }
