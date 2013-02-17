@@ -10,18 +10,20 @@ public class AntiTreeCutter extends JavaPlugin {
 
 	Logger log = new Logger(this);
 	DatabaseConnector dCon = new DatabaseConnector(this);
+	TimeTask tTask = new TimeTask(this);
 	
 	public void onEnable() {
 		
 		setupDatabase();
 		getCommand("atc").setExecutor(new CommandExec(this));
 		getServer().getPluginManager().registerEvents(new BlockBreakListener(this), this);
+		tTask.runCheck();
 		
 		log.logNormal("AntiTreeCutter v" + getDescription().getVersion() + " has been enabled!");
 	}
 	
 	public void onDisable() {
-		
+		getServer().getScheduler().cancelAllTasks();
 		log.logNormal("AntiTreeCutter v" + getDescription().getVersion() + " has been disabled!");
 	}
 	

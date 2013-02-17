@@ -22,6 +22,12 @@ public class DatabaseConnector {
 		return entriesToString;
 	}
 	
+	protected List<Database> getFullDatabase() {
+		List<Database> entries = plugin.getDatabase().find(Database.class).findList();
+
+		return entries;
+	}
+	
 	protected List<String> getWorlds(String playerName) {
 		List<Database> entry = plugin.getDatabase().find(Database.class).where().ieq("playerName", playerName).findList();
 		
@@ -49,5 +55,25 @@ public class DatabaseConnector {
 		
 		plugin.getDatabase().save(entry);
 		return true;
+	}
+	
+	protected boolean removeBanned(String playerName, String world) {
+		Database entry = plugin.getDatabase().find(Database.class).where().ieq("playerName", playerName).ieq("world", world).findUnique();
+		
+		if (entry == null) {
+			return false;
+		}
+		
+		plugin.getDatabase().delete(entry);
+		return true;
+	}
+	
+	protected Integer getMinutesLeft(String playerName, String world) {
+		Database entry = plugin.getDatabase().find(Database.class).where().ieq("playerName", playerName).ieq("world", world).findUnique();
+		
+		if (entry == null) {
+			return 0;
+		}
+		return entry.getMinutesLeft();
 	}
 }

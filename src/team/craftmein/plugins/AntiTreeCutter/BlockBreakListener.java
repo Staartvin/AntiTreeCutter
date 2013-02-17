@@ -23,18 +23,16 @@ public class BlockBreakListener implements Listener {
 		
 		Block block = event.getBlock();
 		Player player = event.getPlayer();
-		System.out.print("Ik kom hier!");
-		if (block.getType() == Material.WOOD) {
+		if (block.getType() == Material.LOG) {
 			// Het is een hout blokje
-			System.out.print("Ik kom hier 2!");
 			if (plugin.dCon.getBannedUsers().contains(player.getName())) {
 				
-				System.out.print("Ik kom hier 3!");
 				List<String> worlds = plugin.dCon.getWorlds(player.getName()); 
+				
 				if (!worlds.contains(player.getWorld().getName()) || worlds == null) return;
-				System.out.print("Ik kom hier 5!");
 				// De speler is gebanned. Hij kan dus niet hout breken.
 				player.sendMessage(ChatColor.RED + "You cannot chop wood at the moment. You have been naughty!");
+				player.sendMessage(ChatColor.RED + "You need to wait another " + plugin.dCon.getMinutesLeft(player.getName(), player.getWorld().getName()) + " minutes before you can chop again!");
 				
 				event.setCancelled(true);
 			}
